@@ -1,0 +1,36 @@
+<idea-plugin>
+    <id>com.dylanwuzh.plugin.jsontodart</id>
+    <name>JsonToDart</name>
+    <vendor email="dylanwuzh@gmail.com" url="https://github.com/dylanwuzh/plugin-json-to-dart">
+        DylanWu
+    </vendor>
+
+    <description><![CDATA[
+      Automatically generate the code needed for json_serializable and automatically run the <b>flutter pub run build_runner build -delete-conflicting-outputs</b> command.
+    ]]></description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.json</depends>
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.all</depends>
+    <depends>com.jetbrains.sh</depends>
+    <depends>Dart</depends>
+    <depends>io.flutter</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="JSON to Dart Class" displayType="BALLOON" key="notification.group.name"/>
+        <applicationService serviceImplementation="com.dylanwuzh.plugin.setting.Settings"/>
+    </extensions>
+
+    <actions>
+        <action id="JsonToData.JsonToDartBeanAction"
+                class="com.dylanwuzh.plugin.actions.JsonToDartBeanAction"
+                text="JsonToDartBean"
+                icon="/icons/plugin.png"
+                description="Generate dart bean class from JSON">
+            <add-to-group group-id="NewGroup" anchor="before" relative-to-action="NewFile"/>
+        </action>
+    </actions>
+</idea-plugin>
